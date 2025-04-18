@@ -29,7 +29,7 @@ pip install poetry
 ```
 - Install the module and set up the precommit
 ```bash
-poetry install
+poetry install --all-groups
 poetry run pre-commit install
 poetry env info
 ```

@@ -1,64 +1,36 @@
 #Formating the code
 repos:
 -   repo: https://github.com/psf/black
-    rev: ''
+    rev: 25.1.0
     hooks:
     -   id: black
 #Formating the code
--   repo: https://github.com/pre-commit/mirrors-isort
-    rev: ''
+-   repo: https://github.com/pycqa/isort
+    rev: 6.0.1
     hooks:
-    -   id: isort
-        name: isort
-        entry: isort
-        language: system
-        types: [ python ]
-        include: ^(app/|tests/)
-        exclude: '.*/migrations/.*'
-        args: [
-            '--line-length=110',
-            '--multi-line=3',
-            '--force-grid-wrap=0',
-            '--trailing-comma',
-            '--use-parentheses',
-            '--ensure-newline-before-comments',
-        ]
+      - id: isort
+        name: isort (python)
 #Formating the code
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: ''
+    rev: v5.0.0
     hooks:
     -   id: end-of-file-fixer
         name:  end-of-file-fixer
-        stages: [commit]
     -   id: mixed-line-ending
         name: mixed-line-ending
-        stages: [commit]
     -   id: trailing-whitespace
         name: trailing-whitespace
-        stages: [commit]
     -   id: check-ast
         name: check-assertion
-        stages: [commit]
     -   id: check-toml
-        stages: [commit]
     -   id: check-yaml
-        stages: [commit]
     -   id: check-added-large-files
-        stages: [commit]
     -   id: check-merge-conflict
-        stages: [commit]
-#Formating the commit message
--   repo: https://github.com/commitizen-tools/commitizen
-    rev: v2.20.4
-    hooks:
-    -   id: commitizen
-        stages: [commit-msg]
 #Cleaning Notebook
 -   repo: local
     hooks:
     -   id: jupyter-nb-clear-output
         name: jupyter-nb-clear-output
         files: \.ipynb$
-        stages: [commit]
         language: system
         entry: jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace
