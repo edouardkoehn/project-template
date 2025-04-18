@@ -77,3 +77,6 @@ All the used config are defined in the `.pre-commit-config.yaml` file.
 By following these practices and using pre-commit hooks, you ensure that your commits meet a high standard of quality, making it easier to maintain the project in the long run.
 
 For more details on setting up and using pre-commit hooks, you can visit the [pre-commit official website](https://pre-commit.com/).
+
+
+Edouard Koehn, 18.04.2024
