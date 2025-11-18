@@ -2,7 +2,7 @@
 
 This is a template repository for starting a new Python project.
 
-It uses [Poetry](https://python-poetry.org/) for dependency management and versioning. Basic [CI/CD](https://github.com/resources/articles/devops/ci-cd) is set up using [GitHub Actions](https://github.com/features/actions). The testing framework is [pytest](https://docs.pytest.org/en/stable/), and we use [pre-commit](https://pre-commit.com/) to enforce code formatting and maintain code quality.
+It uses [UV](https://docs.astral.sh/uv/) for dependency management and versioning. Basic [CI/CD](https://github.com/resources/articles/devops/ci-cd) is set up using [GitHub Actions](https://github.com/features/actions). The testing framework is [pytest](https://docs.pytest.org/en/stable/), and we use [pre-commit](https://pre-commit.com/) to enforce code formatting and maintain code quality. The virtual environment is managed using [venv](https://docs.python.org/3/library/venv.html) that is integrated with uv.
 
 The CI pipeline installs the project using the `pyproject.toml` file and automatically runs the included unit tests. We **strongly** suggest that users use [miniconda](https://www.anaconda.com/docs/getting-started/miniconda/main) to set up its virtual environment.
 
@@ -18,40 +18,40 @@ The CI pipeline installs the project using the `pyproject.toml` file and automat
 ```bash
 git clone https://github.com/edouardkoehn/XX.git
 ```
-- Create your virtual env using conda
+- Create your virtual env using venv en uv
 ```bash
-conda create -n projectName python=3.10
-conda activate projectName
+pip install uv
+uv sync
 ```
-- Install poetry
+
+- Set up the precommit
 ```bash
-pip install poetry
-```
-- Install the module and set up the precommit
-```bash
-poetry install --all-groups
-poetry run pre-commit install
-poetry env info
+uv run pre-commit install
 ```
 
 ## Managing Dependencies
 
-Poetry is a powerful tool that helps you manage and update project dependencies with ease. It allows you to automatically track and specify the required versions of dependencies in your project.
+UV is a powerful tool that helps you manage and update project dependencies with ease. It allows you to automatically track and specify the required versions of dependencies in your project.
 
 ### Adding a Dependency
 
 To add a dependency with Poetry, such as `numpy`, simply run the following command:
 ```bash
-poetry install numpy
+uv add numpy
 ```
 This command will not only install `numpy` but also automatically update the `pyproject.toml` file to reflect the new dependency.
-
+### Removing a Dependency
+To remove a dependency, such as `numpy`, you can use the following command:
+```bash
+uv remove numpy
+```
+This will uninstall `numpy` from your environment and update the `pyproject.toml` file accordingly.
 ### Grouping Dependencies
 Poetry also enables you to group dependencies based on their function, which is useful for creating lighter production requirements or separating dependencies used for development or testing.
 
 For example, to add `pytest` as a development dependency (for testing), you can use the `--group` flag:
 ```bash
-poetry add pytest --group test
+uv add pytest --group test
 ```
 
 This will install `pytest` and categorize it under the `test` group in the `pyproject.toml` file, ensuring that only the necessary dependencies are included in production.

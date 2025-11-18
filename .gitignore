@@ -8,6 +8,8 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+uv.lock
+.venv
 .Python
 build/
 develop-eggs/

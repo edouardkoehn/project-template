@@ -1,25 +1,24 @@
-[tool.poetry]
-name = "template"#name of your module
-version = "0.0.1"#version of your module
-description = "Template for repo"#description of your modeél
-authors = ["Edouard Koehn"]
-license = "MIT License"
+[project]
+name = "template"
+version = "0.1.0"
+description = "Template for repo"
+authors = [{ name = "Edouard Koehn" }]
+requires-python = ">=3.10,<3.12"
+license = "MIT"
 
-# Main dependencies
-[tool.poetry.dependencies]
-python = ">=3.10,<3.12"
+[dependency-groups]
+dev = ["pre-commit>=4.2.0,<5"]
+test = ["pytest>=8.3.5,<9"]
 
-# Dev dependencies
-[tool.poetry.group.dev.dependencies]
-pre-commit = "^4.2.0"
-
-#Test dependencies
-[tool.poetry.group.test.dependencies]
-pytest = "^8.3.5"
+[tool.uv]
+default-groups = [
+    "dev",
+    "test",
+]
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.black]
 exclude = '''
@@ -33,6 +32,4 @@ exclude = '''
   | \.mypy_cache
 )\
 '''
-# Scripts of your module
-[tool.poetry.scripts]
 #spectral_clustering = "clustering:spectral_clustering.spectral_clustering"
