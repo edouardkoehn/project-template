@@ -28,7 +28,14 @@ uv sync
 ```bash
 uv run pre-commit install
 ```
-
+- Activate your virtual env
+```bash
+source .venv/bin/activate
+```
+- Deactivate your virtual env
+```bash
+deactivate
+```
 ## Managing Dependencies
 
 UV is a powerful tool that helps you manage and update project dependencies with ease. It allows you to automatically track and specify the required versions of dependencies in your project.
