@@ -16,8 +16,8 @@ jobs:
       - name: install dependancies [pip]
         run: |
           python -m pip install pip --upgrade pip
-          pip install poetry==1.8.3
-          poetry install
+          pip install uv
+          uv sync
       #- name: run unitest
       #  run: |
-      #    poetry run pytest
+      #    uv run pytest
